@@ -80,4 +80,3 @@ Deploy app:
     
     
 Now we can visit our app on `http.<name_of_your_app>.herokuapp.com`
-                        srg
