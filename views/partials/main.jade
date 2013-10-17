@@ -1,0 +1,62 @@
+.top-bar
+  ul.title-area
+    li.name
+      h1
+        a(href="#") Fifa Tracker
+
+
+.row
+  .small-9.columns
+    .row
+      .small-8.columns
+        h3 Games
+
+    ul.small-block-grid-1
+      li.game(ng-repeat="game in games | orderBy:'-date'")
+        .row
+          .small-6.columns
+            em {{ game.date | date:'fullDate' }} @ {{ game.date | date:'shortTime' }}
+          .small-6.columns.text-right
+            strong {{ game.wager }} cream wager
+
+        .panel
+          a(class="button tiny alert delete-game", href="#", ng-click="removeGame($index)") Remove
+          .row
+            .player.small-6.columns(ng-class="{ 'winner': game.playerOneScore > game.playerTwoScore }")
+              .name {{ game.playerOne }}
+              .score {{ game.playerOneScore }}
+              .team {{ game.playerOneTeam }}
+
+            .player.small-6.columns(ng-class="{ 'winner': game.playerOneScore < game.playerTwoScore }")
+              .name {{ game.playerTwo }}
+              .score {{ game.playerTwoScore }}
+              .team {{ game.playerTwoTeam }}
+
+  .small-3.columns
+    h3 Ticker
+    .alert-box.success.text-center {{ creamLine }}
+    ul.no-bullets
+      li(ng-repeat="game in games | orderBy:'-date'")
+        strong {{ game.winner }} + {{ game.wager }}
+
+
+
+
+
+form(action='', name='addGameForm', ng-submit='addGame()')
+  .row
+    .small-6.columns
+      input(type='text', ng-model='playerOne', placeholder='Player 1', required='required')
+      input(type='text', ng-model='playerOneScore', placeholder='Score', required='required')
+      input(type='text', ng-model='playerOneTeam', placeholder='Team', required='required')
+    .small-6.columns
+      input(type='text', ng-model='playerTwo', placeholder='Player 2', required='required')
+      input(type='text', ng-model='playerTwoScore', placeholder='Score', required='required')
+      input(type='text', ng-model='playerTwoTeam', placeholder='Team', required='required')
+    .row
+      .small-12.columns
+        input(type='range', ng-model='wager', placeholder='Wager', min='5', max='40', required='required')
+        | {{ wager }}
+    .row
+      .small-12.columns
+        button.button.expand(type='submit') Add Game

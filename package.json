@@ -1,12 +1,18 @@
 {
-    "name": "application-name",
-    "version": "0.0.1",
-    "dependencies": {
-        "express": "3.1.x",
-        "jade": ">= 0.0.1"
-    },
-    "engines": {
-        "node": "0.10.x",
-        "npm": "1.2.x"
-    }
+  "name": "fifa-tracker",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.1.x",
+    "jade": ">= 0.0.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-stylus": "~0.8.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "nib": "~1.0.1"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
 }
